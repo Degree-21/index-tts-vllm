@@ -465,6 +465,8 @@ class IndexTTS2:
 
         # save audio
         wav = wav.cpu()  # to cpu
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
         if output_path:
             # 直接保存音频到指定路径中
             if os.path.isfile(output_path):
